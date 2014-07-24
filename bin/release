@@ -5,4 +5,5 @@ cat << EOF
 addons:
 config_vars:
   PATH: local/bin:vendor/bin:/usr/local/bin:/usr/bin:/bin
+  PERL5LIB: local/lib/perl5
 EOF
