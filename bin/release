@@ -4,5 +4,5 @@ cat << EOF
 ---
 addons:
 config_vars:
-  PATH: vendor/bin:/usr/local/bin:/usr/bin:/bin
+  PATH: local/bin:vendor/bin:/usr/local/bin:/usr/bin:/bin
 EOF
