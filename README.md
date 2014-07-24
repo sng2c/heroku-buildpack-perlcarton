@@ -1,5 +1,5 @@
-Heroku buildpack: Perl
-======================
+Heroku buildpack: Perl/Carton
+=============================
 
 This is a Heroku buildpack that runs any Carton based web applications.
 Even for Dokku.
@@ -23,6 +23,7 @@ Example usage:
     requires 'DBI', '1.6';
 
     $ cat Procfile
+    # PERL5LIB=local/lib/perl5 is for compatiblity to Dokku.
     web: PERL5LIB=local/lib/perl5 carton exec starman --preload-app --port \$PORT
 
     $ cat .env
@@ -35,8 +36,8 @@ Example usage:
     ...
     -----> Heroku receiving push
     -----> Fetching custom buildpack
-    -----> Perl Carton app detected
-    -----> Installing dependencies
+    -----> Perl/Carton app detected
+    ...
 
 The buildpack will detect that your app has a `vendor` in the root.
 
