@@ -1,7 +1,8 @@
 Heroku buildpack: Perl
 ======================
 
-This is a Heroku buildpack that runs any PSGI based web applications using Starman.
+This is a Heroku buildpack that runs any Carton based web applications.
+Even for Dokku.
 
 Usage
 -----
@@ -9,24 +10,35 @@ Usage
 Example usage:
 
     $ ls
+    .env
     cpanfile
+    cpanfile.snapshot
     app.psgi
     lib/
-
+    vendor/
+    Procfile
+    
     $ cat cpanfile
     requires 'Plack', '1.0000';
     requires 'DBI', '1.6';
 
-    $ heroku create --stack cedar --buildpack https://github.com/miyagawa/heroku-buildpack-perl.git
+    $ cat Procfile
+    web: PERL5LIB=local/lib/perl5 carton exec starman --preload-app --port \$PORT
+
+    $ cat .env
+    # custom buildpack url for Dokku
+    export BUILDPACK_URL=https://github.com/sng2c/heroku-buildpack-perlcarton.git
+
+    $ heroku create --stack cedar --buildpack https://github.com/sng2c/heroku-buildpack-perlcarton.git
 
     $ git push heroku master
     ...
     -----> Heroku receiving push
     -----> Fetching custom buildpack
-    -----> Perl/PSGI app detected
+    -----> Perl Carton app detected
     -----> Installing dependencies
 
-The buildpack will detect that your app has an `app.psgi` in the root.
+The buildpack will detect that your app has a `vendor` in the root.
 
 Libraries
 ---------
