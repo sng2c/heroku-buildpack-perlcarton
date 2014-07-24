@@ -23,6 +23,7 @@ Example usage:
     requires 'DBI', '1.6';
 
     $ cat Procfile
+    # PERL5LIB=local/lib/perl5 is for compatiblity to Dokku.
     web: PERL5LIB=local/lib/perl5 carton exec starman --preload-app --port \$PORT
 
     $ cat .env
