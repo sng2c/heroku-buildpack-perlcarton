@@ -2,7 +2,8 @@
 
 cat << EOF
 ---
-addons:
+addons: []
+default_process_types: {}
 config_vars:
   PATH: local/bin:vendor/bin:/usr/local/bin:/usr/bin:/bin
   PERL5LIB: local/lib/perl5
