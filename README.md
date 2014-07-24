@@ -36,8 +36,8 @@ Example usage:
     ...
     -----> Heroku receiving push
     -----> Fetching custom buildpack
-    -----> Perl Carton app detected
-    -----> Installing dependencies
+    -----> Perl/Carton app detected
+    ...
 
 The buildpack will detect that your app has a `vendor` in the root.
 
