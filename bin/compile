@@ -27,6 +27,9 @@ fi
 echo "-----> Installing Module::Runtime"
 cpanm Module::Runtime 2>&1 | indent
 
+echo "-----> Installing List::Util"
+cpanm List::Util 2>&1 | indent
+
 echo "-----> Installing dependencies"
 carton install --deployment --cached 2>&1 | indent
 
