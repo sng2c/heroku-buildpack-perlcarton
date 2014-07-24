@@ -1,5 +1,5 @@
-Heroku buildpack: Perl
-======================
+Heroku buildpack: Perl/Carton
+=============================
 
 This is a Heroku buildpack that runs any Carton based web applications.
 Even for Dokku.
