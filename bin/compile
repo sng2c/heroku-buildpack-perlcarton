@@ -17,7 +17,7 @@ fi
 cd $BUILD_DIR
 
 echo "-----> Installing dependencies"
-carton install --cached 2>&1 | indent
+carton install --deployment --cached 2>&1 | indent
 
 if [ -d $BUILD_DIR/local ]; then
   rm -rf $CACHE_DIR/local
