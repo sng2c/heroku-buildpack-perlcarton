@@ -7,10 +7,7 @@ indent() {
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-PATH="$BUILD_DIR/local/bin:$PATH"
-
-export PERL5LIB="$BUILD_DIR/local/lib/perl5"
-export PERL_CPANM_OPT="--quiet --notest -l $BUILD_DIR/local"
+PATH="$BUILD_DIR/vendor/bin:$PATH"
 
 rm -rf $BUILD_DIR/local
 if [ -d $CACHE_DIR/local ]; then
@@ -19,16 +16,8 @@ fi
 
 cd $BUILD_DIR
 
-if ! [ -e $BUILD_DIR/local/bin/cpanm ]; then
-  echo "-----> Bootstrapping cpanm"
-  curl -L --silent https://raw.github.com/miyagawa/cpanminus/master/cpanm | perl - App::cpanminus 2>&1 | indent
-fi
-
 echo "-----> Installing dependencies"
-cpanm --installdeps . 2>&1 | indent
-
-echo "-----> Installing Starman"
-cpanm Starman 2>&1 | indent
+carton install --cached 2>&1 | indent
 
 if [ -d $BUILD_DIR/local ]; then
   rm -rf $CACHE_DIR/local
