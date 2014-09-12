@@ -12,6 +12,13 @@ PATH="$BUILD_DIR/local/bin:$BUILD_DIR/vendor/bin:$PATH"
 export PERL5LIB="$BUILD_DIR/local/lib/perl5"
 export PERL_CPANM_OPT="--quiet --notest -l $BUILD_DIR/local"
 
+echo "-----> Export Env to .profile.d/perlcarton.sh"
+if ! [ -e $BUILD_DIR/.profile.d ]; then
+	mkdir -p $BUILD_DIR/.profile.d
+fi
+echo 'export PATH=local/bin:vendor/bin:$PATH' > $BUILD_DIR/.profile.d/perlcarton.sh
+echo 'export PERL5LIB=local/lib/perl5' >> $BUILD_DIR/.profile.d/perlcarton.sh
+
 rm -rf $BUILD_DIR/local
 if [ -d $CACHE_DIR/local ]; then
   cp -a $CACHE_DIR/local $BUILD_DIR/local
